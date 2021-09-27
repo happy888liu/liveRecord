@@ -39,7 +39,7 @@ public class Main {
         // 清晰度设置
         qnSetting(roomInfo);
         //开始录制
-        new RecordThread(roomDealer,roomInfo);
+        new RecordThread(roomDealer,roomInfo,cookie);
     }
 
     /**

@@ -9,6 +9,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Config {
+    @Option(name = "splitScriptTags", defaultValue = "false")
+    public static boolean splitScriptTagsIfCheck;
+
+    @Option(name = "splitAVHeaderTags", followField = "splitScriptTagsIfCheck", defaultValue = "")
+    public static Boolean splitAVHeaderTagsIfCheck;
+
+    @Option(name = "delete", defaultValue = "true")
+    public static boolean deleteOnchecked;
+
+    @Option(name = "check", defaultValue = "true")
+    public static boolean autoCheck;
+
     @Option(name = "liver", defaultValue = "bili")
     public static String liver;
 
@@ -20,6 +32,9 @@ public class Config {
 
     @Option(name = "qnPri", defaultValue = "")
     public static String[] qnPriority;
+
+    @Option(name = "zip", defaultValue = "false")
+    public static boolean flagZip;
 
     @Option(name = "retry", defaultValue = "5")
     public static int maxFailCnt;
@@ -111,7 +126,7 @@ public class Config {
      * @param key
      * @return
      */
-    private static String getValue(String param, String key) {
+    public static String getValue(String param, String key) {
         Pattern pattern = Pattern.compile(key + "=([^&]*)");
         Matcher matcher = pattern.matcher(param);
         if (matcher.find()) {
